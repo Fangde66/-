@@ -1,0 +1,44 @@
+spring:
+#  激活指定的环境
+  profiles:
+    active: dev
+  data:
+    redis:
+      host: ${tlias.redis.host}
+      port: ${tlias.redis.port}
+      password: ${tlias.redis.password}
+#      每个数据库相互独立
+      database: ${tlias.redis.database}
+
+  application:
+    name: tlias-web-management
+  #mysql连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tlias
+    username: root
+    password: # 输入自己的redis密码
+  servlet:
+    multipart:
+#      单个文件最大上传大小
+      max-file-size: 10MB
+#      最大请求大小（所有文件加上表单数据）
+      max-request-size: 100MB
+
+#mybatis相关配置
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+#spring事务管理日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+#阿里云配置参数
+aliyun:
+  oss:
+    endpoint: http://oss-cn-beijing.aliyuncs.com
+    region: cn-beijing
+    bucket: java-5-21

@@ -1,0 +1,9 @@
+# 开发环境
+
+tlias:
+  redis:
+    host: localhost
+    port: 6379
+    password: # 输入自己的redis密码
+    #      每个数据库相互独立
+    database: 1

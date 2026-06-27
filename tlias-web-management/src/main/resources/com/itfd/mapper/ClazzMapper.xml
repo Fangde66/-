@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itfd.mapper.ClazzMapper">
+    <select id="list" resultType="com.itfd.pojo.Clazz">
+        select *,emp.name master_name from clazz left join emp on clazz.master_id = emp.id
+        <where>
+            <if test="name != null and name != ''">
+                clazz.name like concat('%',#{name},'%')
+            </if>
+            <if test="begin != null">
+                and clazz.begin_date >= #{begin}
+            </if>
+            <if test="end != null">
+                and clazz.end_date &lt;= #{end}
+            </if>
+        </where>
+    </select>
+</mapper>

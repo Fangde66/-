@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.6</version>
+<!--        父工程的相对路径-->
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.itfd</groupId>
+    <artifactId>tlias-parents</artifactId>
+    <version>1.0-SNAPSHOT</version>
+<!--    打包方式设置为pom，表示这是父工程，不写代码-->
+    <packaging>pom</packaging>
+
+    <properties>
+<!--        自定义信息-->
+        <spring.boot.starter.version>4.0.6</spring.boot.starter.version>
+        <alibabacloud.oss.v2.version>0.4.0</alibabacloud.oss.v2.version>
+        <jjwt.api.version>0.13.0</jjwt.api.version>
+        <jjwt.impl.version>0.13.0</jjwt.impl.version>
+        <jjwt.jackson.version>0.13.0</jjwt.jackson.version>
+    </properties>
+
+<!--    聚合-->
+    <modules>
+        <module>../tlias-common1</module>
+        <module>../tlias-utils</module>
+        <module>../tlias-pojo</module>
+        <module>../tlias-web-management</module>
+    </modules>
+<!--    直接引入-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.boot.starter.version}</version>
+        </dependency>
+    </dependencies>
+
+<!--    统一管理依赖版本-->
+    <dependencyManagement>
+        <dependencies>
+            <!--        阿里云OSS依赖-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>alibabacloud-oss-v2</artifactId>
+                <version>${alibabacloud.oss.v2.version}</version>
+            </dependency>
+
+            <!-- JWT依赖-->
+            <!-- JJWT 官方最新（适配 JDK24） -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.impl.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.jackson.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

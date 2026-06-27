@@ -1,0 +1,16 @@
+# IDE文件
+.idea/
+*.iml
+# Java编译产物
+target/
+*.jar
+# 日志
+logs/
+*.log
+# 本地环境配置
+application-prod.yml
+.env
+# 系统缓存
+.DS_Store
+
+.claude
